@@ -4,10 +4,7 @@ mahfuzulkabir.com \
 https://www.linkedin.com/in/mahfuzulkabir \
 
 ## Installation
-First install the dependencies
-````
-pip install -r requirements.txt
-````
+
 install the package with
 
 ````
