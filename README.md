@@ -1,6 +1,6 @@
 ## Bangla NLP Toolkit
 Created by <b>A F M Mahfuzul Kabir</b> \
-mahfuzulkabir.com \
+<a href='mahfuzulkabir.com'>mahfuzulkabir.com</a> \
 https://www.linkedin.com/in/mahfuzulkabir \
 
 ## Installation
