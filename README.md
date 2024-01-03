@@ -1,13 +1,10 @@
 ## Bangla NLP Toolkit
 Created by <b>A F M Mahfuzul Kabir</b> \
-mahfuzulkabir.com \
+<a href='mahfuzulkabir.com'>mahfuzulkabir.com</a> \
 https://www.linkedin.com/in/mahfuzulkabir \
 
 ## Installation
-First install the dependencies
-````
-pip install -r requirements.txt
-````
+
 install the package with
 
 ````
@@ -119,5 +116,6 @@ seq2seq.BnAugSeq2Seq(df=test_data,iters=1)
 - <a href='https://amitness.com/2020/05/data-augmentation-for-nlp/'>A Visual Survey of Data Augmentation in NLP</a>
 - <a href='https://huggingface.co/csebuetnlp'>CSE BUET NLP</a>
 - <a href='https://github.com/mnansary/bnUnicodeNormalizer'>Bangla Unicode Normalizer by Bengali Ai</a>
+- <a href='https://github.com/sagorbrur/bnaug'>Bangla Text Augmentation </a>
 
 <b>If you use this package, please don't forget to cite the links and papers mentioned.</b> 
