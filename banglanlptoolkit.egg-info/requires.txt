@@ -3,7 +3,6 @@ numpy
 pandas
 sentencepiece
 torch
-torchaudio
-torchvision
 tqdm
 transformers
+langdetect

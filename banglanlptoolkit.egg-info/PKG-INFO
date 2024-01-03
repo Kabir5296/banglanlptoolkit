@@ -1,15 +1,11 @@
 Metadata-Version: 2.1
 Name: banglanlptoolkit
-Version: 0.0.1
+Version: 0.0.4
 Summary: Toolkits for text processing and augmentation for Bangla NLP
 Home-page: https://github.com/Kabir5296/banglanlptoolkit
 Author: A F M Mahfuzul Kabir
-Author-email: afmmahfuzulkabir@gmail.com
+Author-email: <afmmahfuzulkabir@gmail.com>
 Project-URL: Repository, https://github.com/Kabir5296/banglanlptoolkit
-Classifier: Programming Language :: Python :: 3
-Classifier: License :: OSI Approved :: MIT License
-Classifier: Operating System :: OS Independent
-Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE.txt
 Requires-Dist: bnunicodenormalizer
@@ -17,10 +13,9 @@ Requires-Dist: numpy
 Requires-Dist: pandas
 Requires-Dist: sentencepiece
 Requires-Dist: torch
-Requires-Dist: torchaudio
-Requires-Dist: torchvision
 Requires-Dist: tqdm
 Requires-Dist: transformers
+Requires-Dist: langdetect
 
 ## Bangla NLP Toolkit
 Created by <b>A F M Mahfuzul Kabir</b> \

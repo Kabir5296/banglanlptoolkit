@@ -6,6 +6,14 @@ import torch
 
 class BnNLPNormalizer():
     def __init__(self, allow_en=False, translate_en=False, device=None):
+        """
+        Normalize Bangla text. Two kinds of normalizers are used: unicode normalization provided by 'bnunicodenormalizer', normalizer provided by 'csebuetnlp'
+
+        Args:
+            allow_en (bool, optional): Allow English words existing in a sentence. If true, the unicodenormalizer won't delete english words existing in a sentence. Defaults to False.
+            translate_en (bool, optional): Whether to translate english sentences to Bangla. If set to true and allow_en is also set to true, the english sentences/words will be translated to Bangla. Defaults to False.
+            device (Any, optional): The device to use for the translator model. If not defined, the code will automatically detect available device and set to GPU if possible. Defaults to None.
+        """
         self.uniNorm = Normalizer(allow_english=allow_en)
         self.translate_en = translate_en
         
@@ -20,9 +28,28 @@ class BnNLPNormalizer():
                                             batch_size=12)
 
     def unicode_normalize(self,sentence):
+        """
+        Unicode normalization of given Bangla sentence.
+
+        Args:
+            sentence (string): The sentence to normalize as a string.
+
+        Returns:
+            string: Returns a string with unicode normalized sentence.
+        """
         return ' '.join([normalized_words['normalized'] for normalized_words in [self.uniNorm(word) for word in sentence.split()] if normalized_words['normalized'] != None])
 
     def normalize_bn(self, sentences, punct_replacement_token=None):
+        """
+        Uses csebuetnormalizer to normalize Bangla sentences for NLP application. Also can detect and translate English sentences to Bangla if necessary.
+
+        Args:
+            sentences (string): The sentence to normalize as a string.
+            punct_replacement_token (Any, optional): The character or string to replace punctuations with. If set to None, the punctuations will not be removed. Defaults to None.
+
+        Returns:
+            string: The normalized (and translated if necessary) sentence as a string.
+        """
         normal_sentence = []
         for sentence in sentences:
             language = detect_lang(sentence)

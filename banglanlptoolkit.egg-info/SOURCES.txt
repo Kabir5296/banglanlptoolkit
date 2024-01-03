@@ -1,0 +1,15 @@
+LICENSE.txt
+README.md
+pyproject.toml
+setup.py
+banglanlptoolkit/BanglaAugmentation.py
+banglanlptoolkit/BnNLPNormalizer.py
+banglanlptoolkit/Seq2SeqAug.py
+banglanlptoolkit/SequenceClassificationAug.py
+banglanlptoolkit/__init__.py
+banglanlptoolkit/utils.py
+banglanlptoolkit.egg-info/PKG-INFO
+banglanlptoolkit.egg-info/SOURCES.txt
+banglanlptoolkit.egg-info/dependency_links.txt
+banglanlptoolkit.egg-info/requires.txt
+banglanlptoolkit.egg-info/top_level.txt
