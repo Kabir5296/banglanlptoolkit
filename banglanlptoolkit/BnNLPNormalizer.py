@@ -32,7 +32,7 @@ class BnNLPNormalizer():
         Unicode normalization of given Bangla sentence.
 
         Args:
-            sentence (string): The sentence to normalize as a string.
+            sentence (list): List of sentences to be normalized.
 
         Returns:
             string: Returns a string with unicode normalized sentence.
@@ -41,7 +41,7 @@ class BnNLPNormalizer():
 
     def normalize_bn(self, sentences, punct_replacement_token=None):
         """
-        Uses csebuetnormalizer to normalize Bangla sentences for NLP application. Also can detect and translate English sentences to Bangla if necessary.
+        Uses both bnunicodenormalizer and csebuetnormalizer to normalize Bangla sentences for NLP application. Also can detect and translate English sentences to Bangla if necessary.
 
         Args:
             sentences (string): The sentence to normalize as a string.
@@ -55,7 +55,7 @@ class BnNLPNormalizer():
             language = detect_lang(sentence)
             sentence = normalize(sentence, punct_replacement=punct_replacement_token)
 
-            if self.translate_en and language=='en':
+            if self.translate_en and language !='bn':
                 if self.translate_en:
                     sentence = self.translate_model(sentence)[0]['translation_text']
                 sentence = self.unicode_normalize(sentence)

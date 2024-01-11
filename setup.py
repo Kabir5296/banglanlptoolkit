@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.4' 
+VERSION = '1.0.1' 
 DESCRIPTION = 'Toolkits for text processing and augmentation for Bangla NLP'
 
 setup(
@@ -22,6 +22,11 @@ setup(
             'transformers',
             'langdetect',
         ],
+        classifiers = [
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        ],
+        keywords=['Bangla NLP','Bangla','NLP','NLP Toolkit','Bengali NLP','Bengali Augmentation','Bengali Text Normalization','Bangla NLP Toolkit'],
         dependency_links=['http://github.com/csebuetnlp/normalizer.git'],
         url='https://github.com/Kabir5296/banglanlptoolkit',
         project_urls={'Repository': 'https://github.com/Kabir5296/banglanlptoolkit'},
