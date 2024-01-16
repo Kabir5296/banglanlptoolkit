@@ -2,7 +2,7 @@ from transformers import pipeline
 import torch
 
 class BanglaPunctuation():
-    def __init__(self, device: str ='cuda:0' if torch.cuda.is_available else 'cpu') -> None:
+    def __init__(self, device: str ='cuda:0' if torch.cuda.is_available() else 'cpu') -> None:
         '''
         Initialize Bangla punctuation class. Currently only 3 punctuations are used, '।', ',' and '?'.
         
@@ -44,4 +44,4 @@ class BanglaPunctuation():
     
 if __name__ == '__main__':
     punct_agent = BanglaPunctuation()
-    print(BanglaPunctuation.add_punctuation(raw_text = 'আমার নাম কবির আপনাকে ধন্যবাদ আমার প্যাকেজ ব্যবহার করার জন্য'))
+    print(punct_agent.add_punctuation(raw_text = 'আমার নাম কবির আপনাকে ধন্যবাদ আমার প্যাকেজ ব্যবহার করার জন্য'))

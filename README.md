@@ -15,6 +15,7 @@ pip install banglanlptoolkit
 This package contains several toolkits for Bangla NLP text processing and augmentation. The available tools are listed below.
 
 - Bangla Text Normalizer
+- Bangla Punctuation Generator
 - Bangla Text Augmentation
 
 ## Bangla Text Normalizer
@@ -40,6 +41,18 @@ To allow English, change the code as below. By default, the normalizer module de
 
 ````
 normalizer = BnNLPNormalizer(allow_en=True, translate_en=True)
+````
+
+## Bangla Punctuation Generator
+The package has one punctuation generation model for Bangla. The model was used from <a href=''> this</a> notebook. I currently have this model in my huggingface for ease of use without any token. You can replace with any model of your like if you want.
+
+#### Use:
+
+````
+from banglanlptoolkit import BanglaPunctuation
+
+punct_agent = BanglaPunctuation()
+print(punct_agent.add_punctuation(raw_text = 'আমার নাম কবির আপনাকে ধন্যবাদ আমার প্যাকেজ ব্যবহার করার জন্য'))
 ````
 
 ## Bangla Text Augmentation
