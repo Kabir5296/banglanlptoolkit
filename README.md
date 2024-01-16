@@ -4,6 +4,10 @@ Created by <b>A F M Mahfuzul Kabir</b> \
 https://www.linkedin.com/in/mahfuzulkabir \
 
 ## Installation
+Install the requirements first with:
+````
+pip install -r requirements.txt
+````
 
 install the package with
 
