@@ -1,13 +1,14 @@
 from .BanglaAugmentation import AugmentationBangla
-import torch
+import torch, pandas
 from .BnNLPNormalizer import BnNLPNormalizer
 
 class Seq2SeqAug():
-    def __init__(self,allow_en=False,translate_en=False, punct_replacement_token=None,device=None):
+    def __init__(self, allow_en: bool = False, translate_en: bool = False, punct_replacement_token: bool = None, device: any = None):
         """
         Augmentation for Bangla NLP sequence to sequence generation task. Only can be used for offline augmentation. Online augmentation feature will be added soon.
 
-        Args:
+        Arguements:
+        -----------
             allow_en (bool, optional): Allow English words existing in a sentence. If true, the unicodenormalizer won't delete english words existing in a sentence. Defaults to False.
             translate_en (bool, optional): Whether to translate english sentences to Bangla. If set to true and allow_en is also set to true, the english sentences/words will be translated to Bangla. Defaults to False.
             punct_replacement_token (_type_, optional):The character or string to replace punctuations with. If set to None, the punctuations will not be removed. Defaults to None.
@@ -23,7 +24,7 @@ class Seq2SeqAug():
                                           device=self.device)
         self.punct_replacement_token=punct_replacement_token
 
-    def BnAugSeq2Seq(self, df, iters=1, do_unmask=True, do_BackTrans=True, do_Para=True):
+    def BnAugSeq2Seq(self, df: pandas.DataFrmae, iters: int = 1, do_unmask: bool = True, do_BackTrans: bool = True, do_Para: bool = True) -> dict:
         """
         Return a dictionary of augmented sentences for Bangla sequence to sequence generation task.
         
@@ -34,7 +35,8 @@ class Seq2SeqAug():
         Paraphrasing:
             Paraphrases the given sentence to generate augmented sentences.
 
-        Args:
+        Arguements:
+        -----------
             df (pandas dataframe): The original dataframe to use for augmentation. The dataframe should have 'sentence1' column for input sentences and 'sentence2' column for target.
             iters (int, optional): How many iterations to do while doing augmentation. Defaults to 1.
             do_unmask (bool, optional): Whether to do unmasking augmentation or not. Defaults to True.
@@ -42,6 +44,7 @@ class Seq2SeqAug():
             do_Para (bool, optional): Whether to do paraphrasing augmentation or not. Defaults to True.
 
         Returns:
+        --------
             dict: A dictionary of augmented sentences.
         """
         sentences1 = []

@@ -1,13 +1,15 @@
 from .BanglaAugmentation import AugmentationBangla
 import torch
 from .BnNLPNormalizer import BnNLPNormalizer
+import pandas
 
 class SequenceClassificationAug():
-    def __init__(self,allow_en=False,translate_en=False, punct_replacement_token=None,device=None):
+    def __init__(self, allow_en: bool = False,translate_en: bool = False, punct_replacement_token: any = None, device: any = None):
         """
         Augmentation for Bangla NLP sequence classification task. Only can be used for offline augmentation. Online augmentation feature will be added soon.
 
-        Args:
+        Arguements:
+        -----------
             allow_en (bool, optional): Allow English words existing in a sentence. If true, the unicodenormalizer won't delete english words existing in a sentence. Defaults to False.
             translate_en (bool, optional): Whether to translate english sentences to Bangla. If set to true and allow_en is also set to true, the english sentences/words will be translated to Bangla. Defaults to False.
             punct_replacement_token (_type_, optional):The character or string to replace punctuations with. If set to None, the punctuations will not be removed. Defaults to None.
@@ -23,7 +25,7 @@ class SequenceClassificationAug():
                                           device=self.device)
         self.punct_replacement_token=punct_replacement_token
 
-    def BnAugSeqClassification(self, df, iters=1, do_unmask=True, do_BackTrans=True, do_Para=True):
+    def BnAugSeqClassification(self, df: pandas.DataFrame, iters: int = 1, do_unmask: bool = True, do_BackTrans: bool = True, do_Para: bool = True) -> dict:
         """
         Return a dictionary of augmented sentences for Bangla sequence classification task.
         
@@ -34,7 +36,8 @@ class SequenceClassificationAug():
         Paraphrasing:
             Paraphrases the given sentence to generate augmented sentences.
 
-        Args:
+        Arguements:
+        -----------
             df (pandas dataframe): The original dataframe to use for augmentation. The dataframe should have 'sentence' column for sentences and 'label' column for labels.
             iters (int, optional): How many iterations to do while doing augmentation. Defaults to 1.
             do_unmask (bool, optional): Whether to do unmasking augmentation or not. Defaults to True.
@@ -42,6 +45,7 @@ class SequenceClassificationAug():
             do_Para (bool, optional): Whether to do paraphrasing augmentation or not. Defaults to True.
 
         Returns:
+        --------
             dict: A dictionary of augmented sentences and labels.
         """
         sentences = []
