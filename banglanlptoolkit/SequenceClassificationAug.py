@@ -25,7 +25,7 @@ class SequenceClassificationAug():
                                           device=self.device)
         self.punct_replacement_token=punct_replacement_token
 
-    def BnAugSeqClassification(self, df: pandas.DataFrame, iters: int = 1, do_unmask: bool = True, do_BackTrans: bool = True, do_Para: bool = True) -> dict:
+    def BnAugSeqClassification(self, df: any, iters: int = 1, do_unmask: bool = True, do_BackTrans: bool = True, do_Para: bool = True) -> dict:
         """
         Return a dictionary of augmented sentences for Bangla sequence classification task.
         

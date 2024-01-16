@@ -1,4 +1,5 @@
 from transformers import pipeline
+from .BnNLPNormalizer import BnNLPNormalizer
 import torch
 
 class BanglaPunctuation():
@@ -11,6 +12,7 @@ class BanglaPunctuation():
             device (str, Optional): Device for loading the model to. Defaults to cuda if available, or cpu.
         '''
         self.device = device
+        self.bnormalize = BnNLPNormalizer()
         
         self.label2punc = {'LABEL_0': '', 'LABEL_1': '।', 'LABEL_2': ',', 'LABEL_3': '?'}
         
@@ -33,14 +35,16 @@ class BanglaPunctuation():
             String of original text with punctuations. 
         '''
         text = ''
-        punctuations = self.punctuation_pipeline((raw_text))
+        raw_text = self.bnormalize.unicode_normalize(raw_text)
+        # print(raw_text)
+        punctuations = self.punctuation_pipeline(raw_text)
         for data in punctuations:
             if data['word'][:2] == '##':
                 text += data['word'][2:]+ self.label2punc[data['entity']]
             else:
                 text += ' ' + data['word']+ self.label2punc[data['entity']]
                 
-        return text
+        return self.bnormalize.unicode_normalize(text)
     
 if __name__ == '__main__':
     punct_agent = BanglaPunctuation()

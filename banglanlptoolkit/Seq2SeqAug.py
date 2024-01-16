@@ -24,7 +24,7 @@ class Seq2SeqAug():
                                           device=self.device)
         self.punct_replacement_token=punct_replacement_token
 
-    def BnAugSeq2Seq(self, df: pandas.DataFrmae, iters: int = 1, do_unmask: bool = True, do_BackTrans: bool = True, do_Para: bool = True) -> dict:
+    def BnAugSeq2Seq(self, df: any, iters: int = 1, do_unmask: bool = True, do_BackTrans: bool = True, do_Para: bool = True) -> dict:
         """
         Return a dictionary of augmented sentences for Bangla sequence to sequence generation task.
         
