@@ -28,13 +28,13 @@ class BnNLPNormalizer():
                                             device=device,
                                             batch_size=12)
 
-    def unicode_normalize(self, sentence: list ) -> str:
+    def unicode_normalize(self, sentence: str ) -> str:
         """
         Unicode normalization of given Bangla sentence.
 
         Arguements:
         -----------
-            sentence (list): List of sentences to be normalized.
+            sentence (string): Sentence to be normalized.
 
         Returns:
         --------
@@ -42,13 +42,13 @@ class BnNLPNormalizer():
         """
         return ' '.join([normalized_words['normalized'] for normalized_words in [self.uniNorm(word) for word in sentence.split()] if normalized_words['normalized'] != None])
 
-    def normalize_bn(self, sentences: str, punct_replacement_token: any = None) -> list:
+    def normalize_bn(self, sentences: list, punct_replacement_token: any = None) -> list:
         """
         Uses both bnunicodenormalizer and csebuetnormalizer to normalize Bangla sentences for NLP application. Also can detect and translate English sentences to Bangla if necessary.
 
         Arguements:
         -----------
-            sentences (string): The sentence to normalize as a string.
+            sentences (list): List of sentences to be normalized.
             punct_replacement_token (Any, optional): The character or string to replace punctuations with. If set to None, the punctuations will not be removed. Defaults to None.
         Returns:
         --------
