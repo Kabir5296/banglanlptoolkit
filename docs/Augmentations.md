@@ -25,6 +25,16 @@ augmentations = BMT.Compose([
 
 augmentations.forward(text)
 ````
+You can write your custom augmentation or processing class as well. To do so, follow the code snippet below.
+````
+class YourClassName:
+    def __init__(self):
+        <!-- initialize your class here-->
+    
+    def forward(text):
+        <!-- Run your text processing here and return-->
+````
+
 Define your custom PyTorch dataset and initialize it with the initialized Compose class.
 ````
 from torch.utils.data import Dataset
