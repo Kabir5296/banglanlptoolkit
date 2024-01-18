@@ -22,9 +22,9 @@ This package contains several toolkits for Bangla NLP text processing and augmen
 - Bangla Text Augmentation
 
 ## Documentations:
-- For detailed use of Bangla Text Normalizer, follow [this documentation](./docs/Normalization.md).
-- For detailed use of Bangla Punctuation Generation, follow [this documentation](./docs/Punctuations.md).
-- For detailed use of Bangla Text Augmentation (both online and offline), follow [this documentation](./docs/Augmentations.md).
+- For detailed use of Bangla Text Normalizer, follow [this documentation](https://github.com/Kabir5296/banglanlptoolkit/blob/main/docs/Normalization.md).
+- For detailed use of Bangla Punctuation Generation, follow [this documentation](https://github.com/Kabir5296/banglanlptoolkit/blob/main/docs/Punctuations.md).
+- For detailed use of Bangla Text Augmentation (both online and offline), follow [this documentation](https://github.com/Kabir5296/banglanlptoolkit/blob/main/docs/Augmentations.md).
 
 Thank you very much for using my package. I handle this package all on my own, so if there's any issue with it, I might not always be available to fix it. But if you do encounter such event, feel free to let me know and I'll fix them as soon as I can.
 
