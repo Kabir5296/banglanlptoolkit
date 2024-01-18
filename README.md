@@ -14,13 +14,19 @@ install the package with
 ````
 pip install banglanlptoolkit
 ````
-
 ## Introduction
 This package contains several toolkits for Bangla NLP text processing and augmentation. The available tools are listed below.
 
 - Bangla Text Normalizer
 - Bangla Punctuation Generator
 - Bangla Text Augmentation
+
+## Documentations:
+- For detailed use of Bangla Text Normalizer, follow [this documentation](./docs/Normalization.md).
+- For detailed use of Bangla Punctuation Generation, follow [this documentation](./docs/Punctuations.md).
+- For detailed use of Bangla Text Augmentation (both online and offline), follow [this documentation](./docs/Augmentations.md).
+
+Thank you very much for using my package. I handle this package all on my own, so if there's any issue with it, I might not always be available to fix it. But if you do encounter such event, feel free to let me know and I'll fix them as soon as I can.
 
 ## Bangla Text Normalizer
 Bangla text normalization is a known problem in language processing for normalizing Bangla text data in computer readable format. The unicode normalization normalizes all characters of a text string in the same unicode format and removes unwanted characters present. The csebuetnlp normalizer is used for models such as BanglaBERT, BanglaT5 etc.
@@ -47,13 +53,6 @@ The paraphrasing toolkit uses Bangla paraphrase model of BanglaT5 by CSEBUETNLP.
 The package supports both online and offline augmentations. Offline augmentation can be used to generate new dataframe of augmented texts from original dataframe. This can be saved in a variable or to a file for later use. While offline augmentation can be faster for utilizing processing power (GPU parallelism), it can get a bit annoying because of saving the augmented data every once in a while. People also love to use online augmentation, meaning, augmenting the data 'on the fly' in predefined custom dataset class. This improves performance by augmentation of sentences during training or inference, with no hassle of saving the data separately.
 
 From <b>version 1.1.5</b>, I'm happy to introduce online augmentation techniques in this package. This technique was inspired from the exact same technique of <b>torchvision.transpose</b>, meaning, you can stack several augmentation techniques with a <b>compose</b> class. You can also write your own custom class of augmentation or transform techniques and use them with <b>compose</b>.
-
-## Documentations:
-- For detailed use of Bangla Text Normalizer, follow [this documentation](./docs/Normalization.md).
-- For detailed use of Bangla Punctuation Generation, follow [this documentation](./docs/Punctuations.md).
-- For detailed use of Bangla Text Augmentation (both online and offline), follow [this documentation](./docs/Augmentations.md).
-
-Thank you very much for using my package. I handle this package all on my own, so if there's any issue with it, I might not always be available to fix it. But if you do encounter such event, feel free to let me know and I'll fix them as soon as I can.
 
 ## Inspired from
 - <a href='https://amitness.com/2020/05/data-augmentation-for-nlp/'>A Visual Survey of Data Augmentation in NLP</a>
