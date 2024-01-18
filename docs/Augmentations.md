@@ -16,11 +16,11 @@ First, initialize the Compose class with augmentation or transformation techniqu
 ````
 import banglanlptoolkit.BanglaTextMentation as BTM
 
-augmentations = BMT.Compose([
-                   BMT.Normalize(allow_en=False, punct_replacement_token=''),
-                   BMT.BackTranslation(probability=0.5),
-                   BMT.TokenReplacement(probability=0.5),
-                   BMT.ParaPhrase(probability=0.5),
+augmentations = BTM.Compose([
+                   BTM.Normalize(allow_en=False, punct_replacement_token=''),
+                   BTM.BackTranslation(probability=0.5),
+                   BTM.TokenReplacement(probability=0.5),
+                   BTM.ParaPhrase(probability=0.5),
                 ])
 
 augmentations.forward(text)
