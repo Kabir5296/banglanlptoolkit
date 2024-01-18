@@ -3,17 +3,17 @@ import torch, pandas
 from .BnNLPNormalizer import BnNLPNormalizer
 
 class Seq2SeqAug():
-    def __init__(self, allow_en: bool = False, translate_en: bool = False, punct_replacement_token: bool = None, device: any = None):
-        """
-        Augmentation for Bangla NLP sequence to sequence generation task. Only can be used for offline augmentation. Online augmentation feature will be added soon.
+    """
+    Augmentation for Bangla NLP sequence to sequence generation task. Only can be used for offline augmentation. Online augmentation feature will be added soon.
 
-        Arguements:
-        -----------
-            allow_en (bool, optional): Allow English words existing in a sentence. If true, the unicodenormalizer won't delete english words existing in a sentence. Defaults to False.
-            translate_en (bool, optional): Whether to translate english sentences to Bangla. If set to true and allow_en is also set to true, the english sentences/words will be translated to Bangla. Defaults to False.
-            punct_replacement_token (_type_, optional):The character or string to replace punctuations with. If set to None, the punctuations will not be removed. Defaults to None.
-            device (Any, optional): The device to use for the deep learning models used in this library. If not defined, the code will automatically detect available device and set to GPU if possible. Defaults to None.
-        """
+    Arguements:
+    -----------
+        allow_en (bool, optional): Allow English words existing in a sentence. If true, the unicodenormalizer won't delete english words existing in a sentence. Defaults to False.
+        translate_en (bool, optional): Whether to translate english sentences to Bangla. If set to true and allow_en is also set to true, the english sentences/words will be translated to Bangla. Defaults to False.
+        punct_replacement_token (_type_, optional):The character or string to replace punctuations with. If set to None, the punctuations will not be removed. Defaults to None.
+        device (Any, optional): The device to use for the deep learning models used in this library. If not defined, the code will automatically detect available device and set to GPU if possible. Defaults to None.
+    """
+    def __init__(self, allow_en: bool = False, translate_en: bool = False, punct_replacement_token: bool = None, device: any = None):
         if device is None:
             self.device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
         else:

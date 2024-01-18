@@ -1,7 +1,7 @@
 ## Bangla NLP Toolkit
 Created by <b>A F M Mahfuzul Kabir</b> \
 <a href='mahfuzulkabir.com'>mahfuzulkabir.com</a> \
-https://www.linkedin.com/in/mahfuzulkabir \
+https://www.linkedin.com/in/mahfuzulkabir 
 
 ## Installation
 Install the requirements first with:
@@ -23,41 +23,14 @@ This package contains several toolkits for Bangla NLP text processing and augmen
 - Bangla Text Augmentation
 
 ## Bangla Text Normalizer
+Bangla text normalization is a known problem in language processing for normalizing Bangla text data in computer readable format. The unicode normalization normalizes all characters of a text string in the same unicode format and removes unwanted characters present. The csebuetnlp normalizer is used for models such as BanglaBERT, BanglaT5 etc.
+
 The package uses two normalization toolkits for Bangla text processing. The unicode normalizer is used from <a href='https://github.com/mnansary/bnUnicodeNormalizer'> here</a>. The other normalizer is specifically used for BanglaT5 translation module and taken from <a href='https://github.com/csebuetnlp/normalizer'> here</a>.
 
-#### Use:
-````
-from banglanlptoolkit import BnNLPNormalizer
-normalizer = BnNLPNormalizer()
-
-normalizer.normalize_bn(['পাশে অবস্থিত সংক্ষিপ্ত পূর্ব-পশ্চিম অভিমুখি অনিয়মিত অর্ধবৃত্তাকার সড়ক।'])
-````
-
-You can also use only the unicode normalizer
-````
-from banglanlptoolkit import BnNLPNormalizer
-normalizer = BnNLPNormalizer()
-
-normalizer.unicode_normalize(['পাশে অবস্থিত সংক্ষিপ্ত পূর্ব-পশ্চিম অভিমুখি অনিয়মিত অর্ধবৃত্তাকার সড়ক।'])
-````
-
-To allow English, change the code as below. By default, the normalizer module deletes any English words or pronunciations present. You can also set the module to translate English words to Bengali by changing translate_en attribute to True.
-
-````
-normalizer = BnNLPNormalizer(allow_en=True, translate_en=True)
-````
-
 ## Bangla Punctuation Generator
-The package has one punctuation generation model for Bangla. The model was used from <a href='https://www.kaggle.com/datasets/tugstugi/bengali-ai-asr-submission/data'> this</a> notebook. I currently have this model in my huggingface for ease of use without any token. You can replace with any model of your like if you want.
+The scarcity of good punctuation generator model for Bangla language was very dominant even a few months ago. However, with development of Bangla AI models, we now have very good punctuation generation models for our language as well. 
 
-#### Use:
-
-````
-from banglanlptoolkit import BanglaPunctuation
-
-punct_agent = BanglaPunctuation()
-print(punct_agent.add_punctuation(raw_text = 'আমার নাম কবির আপনাকে ধন্যবাদ আমার প্যাকেজ ব্যবহার করার জন্য'))
-````
+The package uses an open-source punctuation generation model from <a href='https://www.kaggle.com/datasets/tugstugi/bengali-ai-asr-submission/data'> this</a> Kaggle dataset. I currently have this model in my huggingface for ease of use without any token. You can replace with any model of your like if you want.
 
 ## Bangla Text Augmentation
 The package uses three kind of text augmentation techniques. 
@@ -71,63 +44,16 @@ The back translation method translates the sentences from Bangla to English and 
 
 The paraphrasing toolkit uses Bangla paraphrase model of BanglaT5 by CSEBUETNLP. The model can be found in <a href='https://huggingface.co/csebuetnlp/banglat5_banglaparaphrase'>here</a>.
 
-#### Use:
-````
-from banglanlptoolkit.BanglaAugmentation import AugmentationBangla
-augmentations = AugmentationBangla()
+The package supports both online and offline augmentations. Offline augmentation can be used to generate new dataframe of augmented texts from original dataframe. This can be saved in a variable or to a file for later use. While offline augmentation can be faster for utilizing processing power (GPU parallelism), it can get a bit annoying because of saving the augmented data every once in a while. People also love to use online augmentation, meaning, augmenting the data 'on the fly' in predefined custom dataset class. This improves performance by augmentation of sentences during training or inference, with no hassle of saving the data separately.
 
-test_data=['পাশে অবস্থিত একটি সংক্ষিপ্ত পূর্ব-পশ্চিম অভিমুখি অনিয়মিত অর্ধবৃত্তাকার সড়ক।',
-            'সড়কটি অপর অঙ্গরাজ্য সড়ক ৭৯ হতে উদ্ভুত হয়ে বাক-আই হ্রদের সমান্তরালে থেকে পুনরায় একই সড়কে মিশেছে।',
-            'এসআর ৩৬০ সড়কের বেশিরভাগ অংশই ফেয়ারফিল্ড কাউন্টিতে, পাশাপাশি লিকিং কাউন্টিতেও এর কিছু অংশ রয়েছে।',
-            'এটি বাকআই হ্রদের উত্তর তীরের একটি অংশের সাথে সমান্তরালে']
+From <b>version 1.1.5</b>, I'm happy to introduce online augmentation techniques in this package. This technique was inspired from the exact same technique of <b>torchvision.transpose</b>, meaning, you can stack several augmentation techniques with a <b>compose</b> class. You can also write your own custom class of augmentation or transform techniques and use them with <b>compose</b>.
 
-augmentations.Unmasking(test_data)
-augmentations.BackTranslation(test_data)
-augmentations.ParaPhrase(test_data)
-````
+## Documentations:
+- For detailed use of Bangla Text Normalizer, follow [this documentation](./docs/Normalization.md).
+- For detailed use of Bangla Punctuation Generation, follow [this documentation](./docs/Punctuations.md).
+- For detailed use of Bangla Text Augmentation (both online and offline), follow [this documentation](./docs/Augmentations.md).
 
-## Bangla Sequence Classification and Sequence to Sequence Data Augmentation
-By using the methods mentioned and explained above, both sequence classification and sequence to sequence augmentation toolkit takes a dataframe as input and returns a dictionary of augmented data.
-
-#### Use:
-````
-from banglanlptoolkit import SequenceClassificationAug
-seq2seq = SequenceClassificationAug(allow_en=True, translate_en=False, punct_replacement_token=None)
-seq2seq = Seq2SeqAug(allow_en=True,translate_en=False,punct_replacement_token=None)
-````
-
-The attributes allow_en and translate_en are used during normalization and punct_replacement allows the user to replace punctuations to any character of his choice. If set to None, the punctuations will not be replaced at all.
-
-For sequence classification augmentation use like this.
-````
-import pandas as pd
-
-test_data=pd.DataFrame({
-    'sentence':['পাশে অবস্থিত একটি সংক্ষিপ্ত পূর্ব-পশ্চিম অভিমুখি অনিয়মিত অর্ধবৃত্তাকার সড়ক।',
-                'সড়কটি অপর অঙ্গরাজ্য সড়ক ৭৯ হতে উদ্ভুত হয়ে বাক-আই হ্রদের সমান্তরালে থেকে পুনরায় একই সড়কে মিশেছে।',
-                'এসআর ৩৬০ সড়কের বেশিরভাগ অংশই ফেয়ারফিল্ড কাউন্টিতে, পাশাপাশি লিকিং কাউন্টিতেও এর কিছু অংশ রয়েছে।',
-                'এটি বাকআই হ্রদের উত্তর তীরের একটি অংশের সাথে সমান্তরালে'],
-    'label':[0,1,2,3]})
-
-
-seq2seq.BnAugSeqClassification(df=test_data,iters=1)
-````
-For sequence to sequence augmentation use like this.
-````
-test_data=pd.DataFrame({
-    'sentence1':['পাশে অবস্থিত একটি সংক্ষিপ্ত পূর্ব-পশ্চিম অভিমুখি অনিয়মিত অর্ধবৃত্তাকার সড়ক।',
-                'সড়কটি অপর অঙ্গরাজ্য সড়ক ৭৯ হতে উদ্ভুত হয়ে বাক-আই হ্রদের সমান্তরালে থেকে পুনরায় একই সড়কে মিশেছে।',
-                'এসআর ৩৬০ সড়কের বেশিরভাগ অংশই ফেয়ারফিল্ড কাউন্টিতে, পাশাপাশি লিকিং কাউন্টিতেও এর কিছু অংশ রয়েছে।',
-                'এটি বাকআই হ্রদের উত্তর তীরের একটি অংশের সাথে সমান্তরালে'],
-            
-    'sentence2':['পাশে অবস্থিত একটি সংক্ষিপ্ত পূর্ব-পশ্চিম অভিমুখি অনিয়মিত অর্ধবৃত্তাকার সড়ক।',
-                'সড়কটি অপর অঙ্গরাজ্য সড়ক ৭৯ হতে উদ্ভুত হয়ে বাক-আই হ্রদের সমান্তরালে থেকে পুনরায় একই সড়কে মিশেছে।',
-                'এসআর ৩৬০ সড়কের বেশিরভাগ অংশই ফেয়ারফিল্ড কাউন্টিতে, পাশাপাশি লিকিং কাউন্টিতেও এর কিছু অংশ রয়েছে।',
-                'এটি বাকআই হ্রদের উত্তর তীরের একটি অংশের সাথে সমান্তরালে']
-                })
-
-seq2seq.BnAugSeq2Seq(df=test_data,iters=1)
-````
+Thank you very much for using my package. I handle this package all on my own, so if there's any issue with it, I might not always be available to fix it. But if you do encounter such event, feel free to let me know and I'll fix them as soon as I can.
 
 ## Inspired from
 - <a href='https://amitness.com/2020/05/data-augmentation-for-nlp/'>A Visual Survey of Data Augmentation in NLP</a>

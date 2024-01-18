@@ -3,14 +3,14 @@ from .BnNLPNormalizer import BnNLPNormalizer
 import torch
 
 class BanglaPunctuation():
+    '''
+    Initialize Bangla punctuation class. Currently only 3 punctuations are used, '।', ',' and '?'.
+    
+    Arguements:
+    -----------
+        device (str, Optional): Device for loading the model to. Defaults to cuda if available, or cpu.
+    '''
     def __init__(self, device: str ='cuda:0' if torch.cuda.is_available() else 'cpu') -> None:
-        '''
-        Initialize Bangla punctuation class. Currently only 3 punctuations are used, '।', ',' and '?'.
-        
-        Arguements:
-        -----------
-            device (str, Optional): Device for loading the model to. Defaults to cuda if available, or cpu.
-        '''
         self.device = device
         self.bnormalize = BnNLPNormalizer()
         
