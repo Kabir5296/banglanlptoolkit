@@ -7,7 +7,6 @@ import torch
 tqdm.pandas()
 
 MASK_TOKEN = "[MASK]"
-SPECIAL_TOKEN_LIST = ['<pad>', '</s>']
 
 class AugmentationBangla:
     def __init__(self, device='cuda:0', batch_size=12, top_k=1, max_length=512):

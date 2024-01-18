@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '1.1.3' 
+VERSION = '1.1.4.dev0' 
 DESCRIPTION = 'Toolkits for text processing and augmentation for Bangla NLP'
 
 setup(

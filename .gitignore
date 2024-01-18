@@ -2,3 +2,4 @@ banglanlptoolkit.egg-info/
 dist/
 __pycache__/
 banglanlptoolkit/__pycache__/
+banglanlptoolkit/test.ipynb
