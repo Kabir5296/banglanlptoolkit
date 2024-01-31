@@ -1,7 +1,7 @@
 from transformers import pipeline
 import torch
 import random
-from .BnNLPNormalizer import BnNLPNormalizer
+from .bnnlpnormalizer import BnNLPNormalizer
 from normalizer import normalize
 MASK_TOKEN = '[MASK]'
 

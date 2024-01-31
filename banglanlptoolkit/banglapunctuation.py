@@ -1,5 +1,5 @@
 from transformers import pipeline
-from .BnNLPNormalizer import BnNLPNormalizer
+from .bnnlpnormalizer import BnNLPNormalizer
 import torch
 
 class BanglaPunctuation():
