@@ -8,7 +8,7 @@ from time import time
 pandarallel.initialize(progress_bar=True)
 
 class BnNLPNormalizerPlus():
-    def __init__(self,allow_en):
+    def __init__(self,allow_en = False):
         # Initialize normalizer
         self.bnorm = BnNLPNormalizer(allow_en=allow_en)
         
@@ -16,7 +16,7 @@ class BnNLPNormalizerPlus():
         # Calculate total number of lines present in the corpus
         with open(file_path,'rbU') as f:
             num_lines = sum(1 for _ in tqdm(f))
-        print(f'The total number of lines in {os.path.split(file_path[-1])} is: {num_lines}')
+        print(f'The total number of lines in "{file_path}" is: {num_lines}')
         return num_lines
     
     def word_freq_dict(self, file_path, num_lines):
@@ -48,6 +48,7 @@ class BnNLPNormalizerPlus():
         
     def __call__(self, file_path, normalized_word_dict = None):
         # Get some necessary variables
+        start_time = time()
         root_folder = os.path.split(file_path)[:-1][0]
         file_name = os.path.split(file_path)[-1][:-4]
         # Calculate total number of lines present in the corpus
@@ -56,20 +57,32 @@ class BnNLPNormalizerPlus():
         unique_words_dict = self.word_freq_dict(file_path, num_lines)        
         
         # If not using a predefined normalization dictionary (can be loaded manually), then create a normalization dictionary by itself from the unique word frequency dictionary.
+        
         if normalized_word_dict is None:
             normalized_word_dict = self.normalized_words_dict_fn(unique_words_dict)
+        elif os.path.isfile(normalized_word_dict):
+            with open(normalized_word_dict,'r') as f:
+                normalized_word_dict = json.load(f)
+        elif isinstance(normalized_word_dict, dict):
+            print(f'Length of passed dictionary is {len(normalized_word_dict)}')
+        else:
+            raise TypeError('Please pass a valid normalized dictionary or None.')
+            
         
-        save_file = os.path.joint(root_folder,(file_name+'normalized.txt'))
+        save_file = os.path.join(root_folder,(file_name+'normalized.txt'))
         
         # Write a new text file with normalized texts of the original corpus.
         with open(save_file,'w') as f1:
             with open(file_path,'r') as f2:
                 for _, line in tqdm(enumerate(f2), total = num_lines):
                     for word in line.split():
-                        # For each word, check if the normalized dictionary contains the word or not. If it does, simply replace the original word with normalized one. If not, the word will be normalized manually.
+                        # For each word, check if the normalized dictionary contains the word or not. 
+                        # If it does, simply replace the original word with normalized one. If not, the word will be normalized manually.
                         if word in normalized_word_dict and normalized_word_dict[word] is not None:
                             f1.write(normalized_word_dict[word]+' ')
                         elif word not in normalized_word_dict:
                             f1.write(self.bnorm.word_normalize(word) + ' ')
                     f1.write('\n')
+        end_time = time()
         print(f'File saved at {save_file}')
+        print(f"The whole process took {int(end_time - start_time)/60} minutes. It'd probably have taken you a lot longer for typical normalization.")
