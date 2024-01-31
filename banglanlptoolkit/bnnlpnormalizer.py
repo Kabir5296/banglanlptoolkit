@@ -27,6 +27,24 @@ class BnNLPNormalizer():
                                             task='translation',
                                             device=device,
                                             batch_size=12)
+            
+    def word_normalize(self, word: str) -> str:
+        '''
+        Normalize each word using bnunicodenormalizer
+        
+        Arguements:
+        -----------
+            word (str): Word that needs to be normalized.
+        
+        Returns:
+        --------
+            String: The normalized word.
+        '''
+        normalized_word = self.uniNorm(word)['normalized']
+        if normalized_word is not None:
+            return  normalized_word 
+        else: 
+            return ''
 
     def unicode_normalize(self, sentence: str ) -> str:
         """
@@ -40,7 +58,7 @@ class BnNLPNormalizer():
         --------
             string: Returns a string with unicode normalized sentence.
         """
-        return ' '.join([normalized_words['normalized'] for normalized_words in [self.uniNorm(word) for word in sentence.split()] if normalized_words['normalized'] != None])
+        return ' '.join([self.word_normalize(word) for word in sentence.split()])
 
     def normalize_bn(self, sentences: list, punct_replacement_token: any = None) -> list:
         """
