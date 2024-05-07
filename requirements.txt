@@ -4,3 +4,4 @@
 -U sentencepiece
 -U langdetect
 git+https://github.com/csebuetnlp/normalizer
+langdetect
