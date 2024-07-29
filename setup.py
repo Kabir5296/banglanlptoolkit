@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '1.1.7.dev0' 
+VERSION = '1.1.8.dev0' 
 DESCRIPTION = 'Toolkits for text processing and augmentation for Bangla NLP'
 
 setup(
@@ -21,7 +21,7 @@ setup(
         "Programming Language :: Python :: 3.8"
         ],
         
-        keywords=['Bangla','NLP','toolkit','punctuation','augmentation','normalizer'],
+        keywords=['Bangla','NLP','toolkit','punctuation','augmentation','normalizer', 'tokenize'],
         
         url='https://github.com/Kabir5296/banglanlptoolkit',
 )

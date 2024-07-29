@@ -1,7 +1,9 @@
--U transformers
--U torch
--U bnunicodenormalizer
--U sentencepiece
--U langdetect
+transformers
+torch
+bnunicodenormalizer
+sentencepiece
+langdetect
 git+https://github.com/csebuetnlp/normalizer
 langdetect
+pandarallel
+pqdm

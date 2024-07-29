@@ -6,3 +6,4 @@ from .banglapunctuation import BanglaPunctuation
 from .banglatextmentation import *
 from .utils import *
 from .bnnlpnormalizerplus import *
+from .bntokenizers import sent_tokenize, word_tokenize
