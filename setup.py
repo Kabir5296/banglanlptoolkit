@@ -3,6 +3,17 @@ from setuptools import setup, find_packages
 VERSION = '1.1.8.dev0' 
 DESCRIPTION = 'Toolkits for text processing and augmentation for Bangla NLP'
 
+REQUIREMENTS = [
+    'transformers==4.42.4',
+    'torch==2.3.1',
+    'bnunicodenormalizer==0.1.7',
+    'sentencepiece==0.2.0',
+    'langdetect==1.0.9',
+    'pandarallel',
+    'pqdm',
+    'normalizer @ git+https://github.com/csebuetnlp/normalizer'
+]
+
 setup(
         name="banglanlptoolkit", 
         version=VERSION,
@@ -13,6 +24,7 @@ setup(
         long_description=open('README.md').read(),
         long_description_content_type='text/markdown',
         packages=find_packages(),
+        install_requires=REQUIREMENTS,
         
         classifiers = [
         "Intended Audience :: Education",
