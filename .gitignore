@@ -6,3 +6,5 @@ banglanlptoolkit/test.ipynb
 *.ipynb
 *.txt
 DATA/
+venv/
+build/
