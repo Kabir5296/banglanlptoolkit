@@ -4,9 +4,9 @@ Created by <b>A F M Mahfuzul Kabir</b> \
 https://www.linkedin.com/in/mahfuzulkabir 
 
 ## Installation
-Install the requirements first with:
+Install the 'csebuetnlp normalizer' first with:
 ````
-pip install -r requirements.txt
+pip install git+https://github.com/csebuetnlp/normalizer
 ````
 
 install the package with

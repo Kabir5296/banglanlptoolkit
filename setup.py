@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '1.1.7.dev2' 
+VERSION = '1.1.7.dev4' 
 DESCRIPTION = 'Toolkits for text processing and augmentation for Bangla NLP'
 
 REQUIREMENTS = [
@@ -11,7 +11,7 @@ REQUIREMENTS = [
     'langdetect==1.0.9',
     'pandarallel',
     'pqdm',
-    'normalizer @ git+https://github.com/csebuetnlp/normalizer'
+#     'normalizer @ git+https://github.com/csebuetnlp/normalizer'
 ]
 
 setup(
