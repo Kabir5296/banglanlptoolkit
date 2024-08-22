@@ -1,6 +1,7 @@
 from transformers import pipeline
-from .bnnlpnormalizer import BnNLPNormalizer
+from banglanlptoolkit import BnNLPNormalizer
 import torch
+from itertools import chain
 
 class BanglaPunctuation():
     '''
@@ -41,10 +42,9 @@ class BanglaPunctuation():
         tokenized = self.punctuation_pipeline.tokenizer.encode(raw_text)
         chunks = [tokenized[i:i + chunk_size] for i in range(0, len(tokenized), chunk_size)]
         results = []
-        
-        for chunk in chunks:
-            results += self.punctuation_pipeline(self.punctuation_pipeline.tokenizer.decode(chunk, skip_special_tokens=True))
-        
+
+        results = list(chain(*self.punctuation_pipeline(self.punctuation_pipeline.tokenizer.batch_decode(chunks, skip_special_tokens=True))))
+
         for data in results:
             if data['word'][:2] == '##':
                 text += data['word'][2:]+ self.label2punc[data['entity']]
