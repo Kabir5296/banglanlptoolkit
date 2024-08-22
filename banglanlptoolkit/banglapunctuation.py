@@ -22,13 +22,14 @@ class BanglaPunctuation():
             device=self.device,
         )
         
-    def add_punctuation(self,raw_text: str) -> str:
+    def add_punctuation(self,raw_text: str,chunk_size : int = 512) -> str:
         '''
         Infer Bengali text and add punctuations.
         
         Arguements:
         -----------
             raw_text (str): Text to add punctuations to.
+            chunk_size (int, Optional): Tokenizer max length to consider while chunking texts.
         
         Returns:
         --------
@@ -36,14 +37,20 @@ class BanglaPunctuation():
         '''
         text = ''
         raw_text = self.bnormalize.unicode_normalize(raw_text)
-        # print(raw_text)
-        punctuations = self.punctuation_pipeline(raw_text)
-        for data in punctuations:
+        
+        tokenized = self.punctuation_pipeline.tokenizer.encode(raw_text)
+        chunks = [tokenized[i:i + chunk_size] for i in range(0, len(tokenized), chunk_size)]
+        results = []
+        
+        for chunk in chunks:
+            results += self.punctuation_pipeline(self.punctuation_pipeline.tokenizer.decode(chunk, skip_special_tokens=True))
+        
+        for data in results:
             if data['word'][:2] == '##':
                 text += data['word'][2:]+ self.label2punc[data['entity']]
             else:
                 text += ' ' + data['word']+ self.label2punc[data['entity']]
-                
+
         return self.bnormalize.unicode_normalize(text)
     
 if __name__ == '__main__':
