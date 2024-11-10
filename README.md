@@ -1,3 +1,4 @@
+<a href="https://pepy.tech/projects/banglanlptoolkit"><img src="https://static.pepy.tech/badge/banglanlptoolkit" alt="PyPI Downloads"></a>
 ## Bangla NLP Toolkit
 Created by <b>A F M Mahfuzul Kabir</b> \
 <a href='https://mahfuzulkabir.com'>mahfuzulkabir.com</a> \
