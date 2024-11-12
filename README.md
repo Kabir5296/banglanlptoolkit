@@ -1,12 +1,14 @@
+<a href="https://pepy.tech/projects/banglanlptoolkit"><img src="https://static.pepy.tech/badge/banglanlptoolkit" alt="PyPI Downloads"></a>
+<a href="https://pepy.tech/projects/banglanlptoolkit"><img src="https://static.pepy.tech/badge/banglanlptoolkit/month" alt="PyPI Downloads"></a>
 ## Bangla NLP Toolkit
 Created by <b>A F M Mahfuzul Kabir</b> \
 <a href='https://mahfuzulkabir.com'>mahfuzulkabir.com</a> \
 https://www.linkedin.com/in/mahfuzulkabir 
 
 ## Installation
-Install the requirements first with:
+Install the 'csebuetnlp normalizer' first with:
 ````
-pip install -r requirements.txt
+pip install git+https://github.com/csebuetnlp/normalizer
 ````
 
 install the package with
@@ -18,6 +20,7 @@ pip install banglanlptoolkit
 This package contains several toolkits for Bangla NLP text processing and augmentation. The available tools are listed below.
 
 - Bangla Text Normalizer
+- Bangla Basic Tokenizer
 - Bangla Punctuation Generator
 - Bangla Text Augmentation
 
@@ -25,6 +28,7 @@ This package contains several toolkits for Bangla NLP text processing and augmen
 - For detailed use of Bangla Text Normalizer, follow [this documentation](https://github.com/Kabir5296/banglanlptoolkit/blob/main/docs/Normalization.md).
 - For detailed use of Bangla Punctuation Generation, follow [this documentation](https://github.com/Kabir5296/banglanlptoolkit/blob/main/docs/Punctuations.md).
 - For detailed use of Bangla Text Augmentation (both online and offline), follow [this documentation](https://github.com/Kabir5296/banglanlptoolkit/blob/main/docs/Augmentations.md).
+- For detailed use of Bangla Baisc Tokenizer, follow [this documentation](https://github.com/Kabir5296/banglanlptoolkit/blob/main/docs/Tokenizer.md).
 
 Thank you very much for using my package. I handle this package all on my own, so if there's any issue with it, I might not always be available to fix it. But if you do encounter such event, feel free to let me know and I'll fix them as soon as I can.
 
@@ -32,6 +36,9 @@ Thank you very much for using my package. I handle this package all on my own, s
 Bangla text normalization is a known problem in language processing for normalizing Bangla text data in computer readable format. The unicode normalization normalizes all characters of a text string in the same unicode format and removes unwanted characters present. The csebuetnlp normalizer is used for models such as BanglaBERT, BanglaT5 etc.
 
 The package uses two normalization toolkits for Bangla text processing. The unicode normalizer is used from <a href='https://github.com/mnansary/bnUnicodeNormalizer'> here</a>. The other normalizer is specifically used for BanglaT5 translation module and taken from <a href='https://github.com/csebuetnlp/normalizer'> here</a>.
+
+## Bangla Basic Tokenizer
+Different application such as **RAG** needs the world counts or sentence count for proper chunking and our provided tokenizer support these tokenizers to ensure robust chunking and sentence seperation. More details on usage can be found [here](./docs/Tokenizer.md).
 
 ## Bangla Punctuation Generator
 The scarcity of good punctuation generator model for Bangla language was very dominant even a few months ago. However, with development of Bangla AI models, we now have very good punctuation generation models for our language as well. 
@@ -61,3 +68,9 @@ From <b>version 1.1.5</b>, I'm happy to introduce online augmentation techniques
 - <a href='https://github.com/sagorbrur/bnaug'>Bangla Text Augmentation </a>
 
 <b>If you use this package, please don't forget to cite the links and papers mentioned.</b> 
+
+## 💪 Thanks To All Contributors
+
+<a href="https://github.com/Kabir5296/banglanlptoolkit/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=Kabir5296/banglanlptoolkit" alt="List of Contributors"/>
+</a>
