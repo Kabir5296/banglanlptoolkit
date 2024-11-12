@@ -9,3 +9,4 @@ This package contains several toolkits for Bangla NLP text processing and augmen
 - For detailed use of Bangla Text Normalizer, follow [this documentation](./docs/Normalization.md).
 - For detailed use of Bangla Punctuation Generation, follow [this documentation](./docs/Punctuations.md).
 - For detailed use of Bangla Text Augmentation (both online and offline), follow [this documentation](./docs/Augmentations.md).
+- For detailed use of Bangla Baisc Tokenizer, follow [this documentation](./docs/Tokenizer.md).

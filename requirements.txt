@@ -1,5 +1,5 @@
-transformers == 4.42.4
-torch == 2.3.1
+transformers >= 4.42.4
+torch >= 2.0.0
 bnunicodenormalizer == 0.1.7
 sentencepiece == 0.2.0
 langdetect == 1.0.9
